@@ -19,9 +19,29 @@ public class BillService {
 	@Autowired
 	private BillMapper billMapper;
 	
-	public Bill getBills(String roomId, String year, String month){
-		String billId = year + month + roomId;
-		return billMapper.getBills(billId);
+	public Bill getCurrentBill(String roomId, String year, String month){
+		try {
+			String billId = year + month + roomId;
+			return billMapper.getBills(billId);
+		} catch (Exception e) {
+			return null;
+		}
+	}
+	
+	public Bill getPrevBill(String roomId, String year, String month) {
+		try {
+			roomId = StringUtils.leftPad(roomId, 3, "0");
+			String prevYear = year;
+			String prevMonth = StringUtils.leftPad(String.valueOf(Integer.parseInt(month) - 1), 2, "0");
+			if (Integer.parseInt(prevMonth) == 0) {
+				prevMonth = "12";
+				prevYear = String.valueOf(Integer.parseInt(year) - 1);
+			}
+			Bill prevBill = billMapper.getBills(prevYear + prevMonth + roomId);
+			return prevBill;
+		} catch (Exception e) {
+			return null;
+		}
 	}
 
 	@Transactional(rollbackFor = Exception.class)

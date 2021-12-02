@@ -10,7 +10,7 @@
 	</select>
 	
 	<insert id="updateBill" parameterType="com.crom.mybatis.entity.Bill">
-		INSERT INTO BILL (
+		INSERT INTO bill (
 			billId,
 			roomId,
 			renterId,

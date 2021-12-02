@@ -26,13 +26,19 @@ public class BillController {
     @Autowired
     private BillService billService;
     
-	@GetMapping("/{roomId}/{year}/{month}")
-	public Bill getBills(@PathVariable("roomId") String roomId, @PathVariable("month") String month,
+	@GetMapping("/{roomId}/{year}/{month}/current-month")
+	public Bill getCurrentBill(@PathVariable("roomId") String roomId, @PathVariable("month") String month,
 			@PathVariable("year") String year) {
-		return billService.getBills(roomId, year, month);
+		return billService.getCurrentBill(roomId, year, month);
+	}
+	
+	@GetMapping("/{roomId}/{year}/{month}/prev-month")
+	public Bill getPrevBill(@PathVariable("roomId") String roomId, @PathVariable("month") String month,
+			@PathVariable("year") String year) {
+		return billService.getPrevBill(roomId, year, month);
 	}
 
-	@PostMapping("/{roomId}/{year}/{month}")
+	@PostMapping("/{roomId}/{year}/{month}/update")
 	@ResponseBody
 	public ResponseEntity<Bill> updateBill(@PathVariable("roomId") String roomId, @PathVariable("month") String month,
 			@PathVariable("year") String year, @RequestBody Bill params) {
