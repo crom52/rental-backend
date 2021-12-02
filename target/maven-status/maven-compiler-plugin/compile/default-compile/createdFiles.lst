@@ -5,5 +5,6 @@ com\crom\mybatis\mapper\BillMapper.class
 com\crom\mybatis\entity\Room.class
 com\crom\mybatis\MybatisApplication.class
 com\crom\mybatis\service\BillService.class
+com\crom\mybatis\config\CorsConfig.class
 com\crom\mybatis\entity\Renter.class
 com\crom\mybatis\controller\BillController.class
