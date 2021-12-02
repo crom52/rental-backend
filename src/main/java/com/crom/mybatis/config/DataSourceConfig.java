@@ -13,9 +13,10 @@ public class DataSourceConfig {
     public DataSource getDataSource() {
         DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
         dataSourceBuilder.driverClassName("com.mysql.cj.jdbc.Driver");
-        dataSourceBuilder.url("jdbc:mysql://sql6.freemysqlhosting.net/sql6455912?reconnect=true&ssl=true&sslmode=require");
-        dataSourceBuilder.username("sql6455912");
-        dataSourceBuilder.password("7sagEAXmMz");
+        dataSourceBuilder.url("jdbc:mysql://b6ecaef51dbee5:1204900e@us-cdbr-east-04.cleardb.com/heroku_e556888335116c5?reconnect=true&sslmode=require");
+        dataSourceBuilder.username("b6ecaef51dbee5");
+        dataSourceBuilder.password("1204900e");
         return dataSourceBuilder.build();
     }
 }
+
