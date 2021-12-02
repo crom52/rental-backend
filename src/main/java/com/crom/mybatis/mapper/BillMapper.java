@@ -6,5 +6,7 @@ import com.crom.mybatis.entity.Bill;
 
 @Mapper
 public interface BillMapper {
-	Bill getBillByRoomId(String id);
+	Bill getBills(String billId);
+
+	void updateBill(Bill bill);
 }

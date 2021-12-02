@@ -2,8 +2,64 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.crom.mybatis.mapper.BillMapper">
-    <select id="getBillByRoomId" resultType="com.crom.mybatis.entity.Bill">
-		select * from bill where roomId = #{roomId}
+    <select id="getBills" resultType="com.crom.mybatis.entity.Bill">
+		select *
+		from bill
+		where 1=1 
+		and billId = #{billId}
 	</select>
+	
+	<insert id="updateBill" parameterType="com.crom.mybatis.entity.Bill">
+		INSERT INTO BILL (
+			billId,
+			roomId,
+			renterId,
+			period,
+			rentalPrice,
+			total,
+			billDt,
+			oldElecVal,
+			newElecVal,
+			oldWaterVal,
+			newWaterVal,
+			updDt,
+			creDt,
+			creUsrId,
+			updUsrId) 
+			VALUES 
+			(
+			#{billId},
+			#{roomId},
+			#{renterId},
+			#{period},
+			#{rentalPrice},
+			#{total},
+			#{billDt},
+			#{oldElecVal},
+			#{newElecVal},
+			#{oldWaterVal},
+			#{newWaterVal},
+			SYSDATE(),
+			SYSDATE(),
+			#{creUsrId},
+			#{updUsrId}
+			)
+ 		ON DUPLICATE KEY 
+		UPDATE 
+			roomId = #{roomId},
+			renterId= #{renterId},
+			period = #{period},
+			rentalPrice = #{rentalPrice},
+			total = #{total},
+			billDt = #{billDt},
+			oldElecVal = #{oldElecVal},
+			newElecVal = #{newElecVal},
+			oldWaterVal = #{oldWaterVal},
+			newWaterVal = #{newWaterVal},
+			updDt = SYSDATE(),
+			updUsrId = #{updUsrId}
+	</insert>
+	
+
    
 </mapper>

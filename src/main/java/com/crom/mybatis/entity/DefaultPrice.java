@@ -12,6 +12,6 @@ public class DefaultPrice extends CommonDTO {
 	private String roomId;
 	private Double elecPrice;
 	private Double waterPrice;
-	private Double retalPrice;
+	private Double rentalPrice;
 	private Double otherPrices;
 }
