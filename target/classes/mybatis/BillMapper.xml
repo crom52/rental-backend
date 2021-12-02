@@ -60,6 +60,5 @@
 			updUsrId = #{updUsrId}
 	</insert>
 	
-
    
 </mapper>
